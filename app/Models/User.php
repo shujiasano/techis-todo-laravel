@@ -34,12 +34,19 @@ class User extends Authenticatable
     ];
 
     /**
-     * The attributes that should be cast.
+     * The attributes that should be cast to native types
      *
-     * @var array<string, string>
+     * @var array
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
-        'password' => 'hashed',
     ];
+
+    /**
+       * ユーザーの保持する全タスク
+       */
+   public function tasks()
+   {
+       return $this->hasMany(Task::class);
+   }
 }
